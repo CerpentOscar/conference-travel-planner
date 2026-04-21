@@ -33,16 +33,63 @@
     .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin: 16px 0; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
     .grid { display: grid; gap: 16px; }
     @media (min-width: 900px) { .grid.three { grid-template-columns: 1fr 1fr 1fr; } }
+    @media (min-width: 760px) { .grid.six { grid-template-columns: repeat(6, 1fr); } }
     .tag { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; }
     .good { background: var(--goodbg); color: var(--good); }
     .warn { background: var(--warnbg); color: var(--warn); }
     .danger { background: var(--dangerbg); color: var(--danger); }
     .small { font-size: 0.92rem; color: var(--muted); }
     .daynote { margin-top: 8px; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 760px; }
     th, td { border: 1px solid var(--line); padding: 10px; vertical-align: top; text-align: left; }
     th { background: #eef4f8; }
     ul { margin: 8px 0 0 18px; }
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(245,247,251,0.95);
+      backdrop-filter: blur(10px);
+      padding: 10px 0 2px;
+    }
+    .navlinks {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .navlinks a {
+      display: inline-block;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--card);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+    .calendar-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+    .calendar-card h3 { margin: 0 0 8px; font-size: 1rem; }
+    .calendar-meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 8px; }
+    .calendar-list { margin: 0; padding-left: 18px; }
+    .calendar-list li { margin: 6px 0; }
+    .jump { scroll-margin-top: 90px; }
+    @media (max-width: 759px) {
+      .wrap { padding: 14px; }
+      h1 { font-size: 1.7rem; }
+      .card { padding: 14px; }
+      th, td { padding: 8px; font-size: 0.9rem; }
+      .navlinks a { font-size: 0.86rem; padding: 7px 10px; }
+    }
     footer { color: var(--muted); font-size: 0.9rem; padding: 12px 0 30px; }
     .nowrap { white-space: nowrap; }
   </style>
@@ -55,7 +102,23 @@
       <p class="lead">This is a practical planning version of the itinerary, not a fantasy one. It uses rough real-world London travel assumptions, aims for arrival 5 minutes early, and flags legs that are likely to be tight, weak, or unrealistic. Directions and lines are based on the most direct mainstream options and should be rechecked closer to travel because engineering works, DLR changes, and London traffic can shift the best route.</p>
     </header>
 
-    <section class="card">
+    <nav class="topnav">
+      <section class="card">
+        <ul class="navlinks">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#calendar">Calendar</a></li>
+          <li><a href="#thursday">Thu 30 Apr</a></li>
+          <li><a href="#friday">Fri 1 May</a></li>
+          <li><a href="#saturday">Sat 2 May</a></li>
+          <li><a href="#sunday">Sun 3 May</a></li>
+          <li><a href="#monday">Mon 4 May</a></li>
+          <li><a href="#tuesday">Tue 5 May</a></li>
+          <li><a href="#wednesday">Wed 6 May</a></li>
+        </ul>
+      </section>
+    </nav>
+
+    <section class="card jump" id="overview">
       <h2>Global risk summary</h2>
       <div class="grid three">
         <div>
@@ -99,9 +162,89 @@
       </ul>
     </section>
 
-    <section class="card">
+    <section class="card jump" id="calendar">
+      <h2>Quick calendar view</h2>
+      <p class="small">Use this as the fast top-level daily map, then jump into each day for leave times and transport choices.</p>
+      <div class="grid six">
+        <article class="calendar-card">
+          <h3>Thu 30 Apr</h3>
+          <div class="calendar-meta">Heathrow, hotel, Fleet Street</div>
+          <ul class="calendar-list">
+            <li>05:30 Heathrow arrival</li>
+            <li>Hotel check-in / drop bags</li>
+            <li>11:00 Old Bank of England Pub</li>
+          </ul>
+          <p class="small"><span class="tag good">Easy day</span></p>
+        </article>
+        <article class="calendar-card">
+          <h3>Fri 1 May</h3>
+          <div class="calendar-meta">ExCeL and Canary Wharf heavy</div>
+          <ul class="calendar-list">
+            <li>12:00 Badge collection at ExCeL</li>
+            <li>15:00 Henry Addington</li>
+            <li>17:00 Clays</li>
+            <li>19:00 The Orangery</li>
+          </ul>
+          <p class="small"><span class="tag warn">One evening transfer</span></p>
+        </article>
+        <article class="calendar-card">
+          <h3>Sat 2 May</h3>
+          <div class="calendar-meta">Mostly central and workable</div>
+          <ul class="calendar-list">
+            <li>09:00 Borough Market</li>
+            <li>11:00 London Bridge</li>
+            <li>12:00 Queen Victoria St</li>
+            <li>14:00 Swan at the Globe</li>
+            <li>18:30 Tower of London</li>
+            <li>22:00 Troxy</li>
+          </ul>
+          <p class="small"><span class="tag good">Busy but sensible</span></p>
+        </article>
+        <article class="calendar-card">
+          <h3>Sun 3 May</h3>
+          <div class="calendar-meta">The fragile day</div>
+          <ul class="calendar-list">
+            <li>11:00 Old Broad St</li>
+            <li>14:00 Peninsula Square</li>
+            <li>15:15 Royal Victoria</li>
+            <li>16:00 Hay's Galleria</li>
+            <li>Later meetings partly incomplete</li>
+          </ul>
+          <p class="small"><span class="tag danger">Needs fixing</span></p>
+        </article>
+        <article class="calendar-card">
+          <h3>Mon 4 May</h3>
+          <div class="calendar-meta">Tower, ExCeL, back west, then east again</div>
+          <ul class="calendar-list">
+            <li>07:00 Tower of London</li>
+            <li>09:00 Vu from the Tower</li>
+            <li>11:30, 12:00, 13:00 ExCeL</li>
+            <li>15:45 Novotel Tower Bridge</li>
+            <li>17:00 Rocket</li>
+            <li>18:00 Flight Club</li>
+          </ul>
+          <p class="small"><span class="tag warn">Evening discipline needed</span></p>
+        </article>
+        <article class="calendar-card">
+          <h3>Tue 5 May</h3>
+          <div class="calendar-meta">Dense day, one tight cross-city hop</div>
+          <ul class="calendar-list">
+            <li>09:00 Docklands</li>
+            <li>10:00 Western Gateway</li>
+            <li>11:00 Canary Wharf</li>
+            <li>12:00 Old Broad St</li>
+            <li>14:00 Berners St</li>
+            <li>16:30 Leadenhall</li>
+            <li>17:30 Liverpool Street</li>
+          </ul>
+          <p class="small"><span class="tag warn">11 to 12 is tight</span></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card jump" id="thursday">
       <h2>Thursday 30 April</h2>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>From</th><th>Next stop</th><th>Leave by</th><th>Recommended transport</th><th>Risk / note</th></tr></thead>
         <tbody>
           <tr>
@@ -119,13 +262,13 @@
             <td>Low risk if leaving by 10:05. Plenty of slack.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="small daynote">Verdict: easy day. Heathrow to Aldgate is straightforward by Elizabeth line.</p>
     </section>
 
-    <section class="card">
+    <section class="card jump" id="friday">
       <h2>Friday 1 May</h2>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>Meeting</th><th>Next stop</th><th>Leave by</th><th>Transport</th><th>Risk / comment</th></tr></thead>
         <tbody>
           <tr>
@@ -164,13 +307,13 @@
             <td>Fine.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="small daynote">Verdict: sensible day. Docklands legs are easy, Canary Wharf to Bloomsbury is the main friction point.</p>
     </section>
 
-    <section class="card">
+    <section class="card jump" id="saturday">
       <h2>Saturday 2 May</h2>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>Meeting</th><th>Next stop</th><th>Leave by</th><th>Transport</th><th>Risk / comment</th></tr></thead>
         <tbody>
           <tr>
@@ -223,13 +366,13 @@
             <td>Fine.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="small daynote">Verdict: busy but mostly central and realistic.</p>
     </section>
 
-    <section class="card">
+    <section class="card jump" id="sunday">
       <h2>Sunday 3 May</h2>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>Meeting</th><th>Next stop</th><th>Leave by</th><th>Transport</th><th>Risk / comment</th></tr></thead>
         <tbody>
           <tr>
@@ -282,13 +425,13 @@
             <td>Blocked by missing address and meeting times.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="small daynote">Verdict: this day needs cleaning up. The 3:15 to 4:00 leg is harsh, and later missing times make the rest non-actionable.</p>
     </section>
 
-    <section class="card">
+    <section class="card jump" id="monday">
       <h2>Monday 4 May</h2>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>Meeting</th><th>Next stop</th><th>Leave by</th><th>Transport</th><th>Risk / comment</th></tr></thead>
         <tbody>
           <tr>
@@ -355,13 +498,13 @@
             <td>Fine.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="small daynote">Verdict: workable. The Canary Wharf to Shoreditch switch is the only leg that deserves discipline.</p>
     </section>
 
-    <section class="card">
+    <section class="card jump" id="tuesday">
       <h2>Tuesday 5 May</h2>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>Meeting</th><th>Next stop</th><th>Leave by</th><th>Transport</th><th>Risk / comment</th></tr></thead>
         <tbody>
           <tr>
@@ -428,13 +571,13 @@
             <td>Risk unknown until the 19:45 venue is fixed.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="small daynote">Verdict: sharp but doable. The 11:00 to 12:00 leg is the one to police hard.</p>
     </section>
 
-    <section class="card">
+    <section class="card jump" id="wednesday">
       <h2>Wednesday 6 May</h2>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>Meeting</th><th>Next stop</th><th>Leave by</th><th>Transport</th><th>Risk / comment</th></tr></thead>
         <tbody>
           <tr>
@@ -494,7 +637,7 @@
             <td>No issue.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="small daynote">Verdict: not properly finishable until the 11:30 and 13:00 venues are locked in.</p>
     </section>
 
