@@ -3,127 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Matt's Conference Travel Planner</title>
-    <meta name="description" content="A practical day-by-day London conference travel planner for Matt, with leave times, transport modes, risk flags, and realism notes." />
+  <title>Matt's Conference Travel Planner</title>
+  <meta name="description" content="A practical day-by-day London conference travel planner for Matt, with leave times, transport modes, risk flags, and realism notes." />
   <style>
-    :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --line: #dbe2ea;
-      --accent: #0f766e;
-      --soft: #ccfbf1;
-      --warn: #92400e;
-      --warnbg: #ffedd5;
-      --danger: #991b1b;
-      --dangerbg: #fee2e2;
-      --good: #166534;
-      --goodbg: #dcfce7;
-      --max: 1200px;
-    }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); line-height: 1.45; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 20px; }
-    h1,h2,h3 { line-height: 1.2; }
-    h1 { margin: 0 0 10px; font-size: 2.1rem; }
-    p { margin: 0 0 10px; }
-    .lead { color: var(--muted); max-width: 70rem; }
-    .pill { display: inline-block; padding: 5px 10px; border-radius: 999px; background: var(--soft); color: var(--accent); font-weight: 700; margin-bottom: 10px; }
-    .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin: 16px 0; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
-    .grid { display: grid; gap: 16px; }
-    @media (min-width: 900px) { .grid.three { grid-template-columns: 1fr 1fr 1fr; } }
-    @media (min-width: 760px) { .grid.six { grid-template-columns: repeat(6, 1fr); } }
-    @media (min-width: 900px) { .grid.people { grid-template-columns: repeat(3, 1fr); } }
-    .tag { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; }
-    .good { background: var(--goodbg); color: var(--good); }
-    .warn { background: var(--warnbg); color: var(--warn); }
-    .danger { background: var(--dangerbg); color: var(--danger); }
-    .small { font-size: 0.92rem; color: var(--muted); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
-    .button-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 700;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-    }
-    .button-link.primary { background: var(--accent); color: white; border-color: var(--accent); }
-    .person-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-      min-height: 160px;
-    }
-    .person-card h3 { margin: 0; }
-    .person-card p { margin: 0; color: var(--muted); }
-    .person-card .actions { display: flex; flex-wrap: wrap; gap: 8px; }
-    .person-card .actions a { padding: 8px 10px; font-size: 0.9rem; }
-    .daynote { margin-top: 8px; }
-    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 760px; }
-    th, td { border: 1px solid var(--line); padding: 10px; vertical-align: top; text-align: left; }
-    th { background: #eef4f8; }
-    ul { margin: 8px 0 0 18px; }
-    .topnav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(245,247,251,0.95);
-      backdrop-filter: blur(10px);
-      padding: 10px 0 2px;
-    }
-    .navlinks {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .navlinks a {
-      display: inline-block;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--card);
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 700;
-    }
-    .calendar-card {
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-    }
-    .calendar-card h3 { margin: 0 0 8px; font-size: 1rem; }
-    .calendar-meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 8px; }
-    .calendar-list { margin: 0; padding-left: 18px; }
-    .calendar-list li { margin: 6px 0; }
-    .jump { scroll-margin-top: 90px; }
-    @media (max-width: 759px) {
-      .wrap { padding: 14px; }
-      h1 { font-size: 1.7rem; }
-      .card { padding: 14px; }
-      th, td { padding: 8px; font-size: 0.9rem; }
-      .navlinks a { font-size: 0.86rem; padding: 7px 10px; }
-    }
-    footer { color: var(--muted); font-size: 0.9rem; padding: 12px 0 30px; }
-    .nowrap { white-space: nowrap; }
+    :root { --bg:#f5f7fb; --card:#fff; --text:#1f2937; --muted:#6b7280; --line:#dbe2ea; --accent:#0f766e; --soft:#ccfbf1; --warn:#92400e; --warnbg:#ffedd5; --danger:#991b1b; --dangerbg:#fee2e2; --good:#166534; --goodbg:#dcfce7; --max:1200px; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial, Helvetica, sans-serif; background:var(--bg); color:var(--text); line-height:1.45; }
+    .wrap { max-width:var(--max); margin:0 auto; padding:20px; }
+    h1,h2,h3 { line-height:1.2; }
+    h1 { margin:0 0 10px; font-size:2.1rem; }
+    p { margin:0 0 10px; }
+    .lead { color:var(--muted); max-width:70rem; }
+    .pill { display:inline-block; padding:5px 10px; border-radius:999px; background:var(--soft); color:var(--accent); font-weight:700; margin-bottom:10px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; margin:16px 0; box-shadow:0 1px 2px rgba(0,0,0,0.04); }
+    .grid { display:grid; gap:16px; }
+    @media (min-width:900px) { .grid.three { grid-template-columns:1fr 1fr 1fr; } .grid.six { grid-template-columns: repeat(6, 1fr); } }
+    .tag { display:inline-block; padding:4px 8px; border-radius:999px; font-size:0.82rem; font-weight:700; }
+    .good { background:var(--goodbg); color:var(--good); }
+    .warn { background:var(--warnbg); color:var(--warn); }
+    .danger { background:var(--dangerbg); color:var(--danger); }
+    .small { font-size:0.92rem; color:var(--muted); }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 4px; }
+    .button-link { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid var(--line); background:#fff; color:var(--text); text-decoration:none; font-weight:700; box-shadow:0 1px 2px rgba(0,0,0,0.04); }
+    .button-link.primary { background:var(--accent); color:white; border-color:var(--accent); }
+    .calendar-card { padding:14px; border:1px solid var(--line); border-radius:12px; background:linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); }
+    .calendar-card h3 { margin:0 0 8px; font-size:1rem; }
+    .calendar-list { margin:0; padding-left:18px; }
+    .calendar-list li { margin:6px 0; }
+    .jump { scroll-margin-top:90px; }
+    .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    table { width:100%; border-collapse:collapse; font-size:0.95rem; min-width:760px; }
+    th, td { border:1px solid var(--line); padding:10px; vertical-align:top; text-align:left; }
+    th { background:#eef4f8; }
+    footer { color:var(--muted); font-size:0.9rem; padding:12px 0 30px; }
+    @media (max-width:759px) { .wrap { padding:14px; } h1 { font-size:1.7rem; } .card { padding:14px; } th, td { padding:8px; font-size:0.9rem; } }
   </style>
 </head>
 <body>
@@ -131,12 +44,12 @@
     <header class="card">
       <div class="pill">Matt's conference travel planner</div>
       <h1>London schedule, travel reality, and risk review</h1>
-      <p class="lead">Built from Matt's itinerary brief. This version uses rough real-world London travel assumptions, aims for arrival 5 minutes early, and flags legs that are likely to be tight, weak, or unrealistic. Directions and lines are based on the most direct mainstream options and should be rechecked closer to travel because engineering works, DLR changes, and London traffic can shift the best route.</p>
+      <p class="lead">Built from Matt's latest itinerary brief. This version uses rough real-world London travel assumptions, aims for arrival 5 minutes early, and flags legs that are tight, weak, or straight-up unrealistic.</p>
       <div class="hero-actions">
         <a class="button-link primary" href="index.html">Back to dashboard</a>
         <a class="button-link" href="#overview">Quick read</a>
       </div>
-      <p class="small"><strong>Source brief:</strong> international conference in London, multiple meetings across the city, with a need for day-by-day leave times, transport mode, line direction, delay risk, and a verdict on whether each leg is actually sensible.</p>
+      <p class="small"><strong>Source brief:</strong> international conference in London, multiple meetings across the city, with day-by-day leave times, transport mode, line direction, delay risk, and realism notes.</p>
     </header>
 
     <section class="card jump" id="overview">
@@ -145,393 +58,185 @@
         <div>
           <span class="tag danger">High risk</span>
           <ul>
-            <li>Sunday 3 May, 3:15pm Royal Victoria to 4pm Hay’s Galleria is very tight and likely brittle.</li>
-            <li>Tuesday 5 May, 11am Canary Wharf to 12pm Old Broad Street is aggressive if the prior meeting overruns.</li>
-            <li>Tuesday 5 May, 7:45pm unknown location to 10pm Studio 338 is impossible to plan properly until the venue is fixed.</li>
-            <li>Wednesday 6 May has two destination-to-be-confirmed meetings, which makes the whole midday chain unstable.</li>
+            <li>Saturday evening has the L’Oscar vs Troxy overlap.</li>
+            <li>Sunday’s Royal Victoria to Hay’s Galleria move is very tight.</li>
+            <li>Tuesday evening is messy because Abion, House of Lords and Studio 338 stack badly.</li>
+            <li>Wednesday afternoon overlaps the happy hour and the 15:45 meeting.</li>
           </ul>
         </div>
         <div>
           <span class="tag warn">Transport reality</span>
           <ul>
             <li>Tube and Elizabeth line are more reliable than taxis for central London daytime hops.</li>
-            <li>Canary Wharf, ExCeL, Royal Victoria and Greenwich legs usually favour DLR or Elizabeth line, not road.</li>
-            <li>Black cabs and rideshares can help on short awkward legs, but weekday traffic can kill precision.</li>
-            <li>Allow extra buffer for station exits, escalators, venue access, and security at conference sites.</li>
+            <li>Canary Wharf, ExCeL, Royal Victoria and Greenwich legs usually favour DLR or Elizabeth line.</li>
+            <li>Black cabs help on short awkward legs, but weekday traffic can still bite.</li>
+            <li>Allow extra buffer for station exits, escalators, venue access, and security.</li>
           </ul>
         </div>
         <div>
           <span class="tag good">Overall verdict</span>
           <ul>
-            <li>Thursday, Friday, Saturday, and Monday are broadly workable with discipline.</li>
-            <li>Sunday is the ugliest day and may need one meeting shortened or moved.</li>
-            <li>Tuesday is busy but manageable if meetings actually start and end on time.</li>
-            <li>Wednesday is incomplete until the two unknown venues are confirmed.</li>
+            <li>Thursday, Friday, Saturday and Monday are broadly workable.</li>
+            <li>Sunday needs discipline and a decision on priorities.</li>
+            <li>Tuesday is the ugliest day.</li>
+            <li>Wednesday is mostly fine except for the overlap at 14:00–16:30 / 15:45.</li>
           </ul>
         </div>
       </div>
     </section>
 
     <section class="card">
-      <h2>Travel assumptions</h2>
-      <ul>
-        <li>Target is arrival around 5 minutes early.</li>
-        <li>Walking times are approximate and assume normal pace with conference gear.</li>
-        <li>Tube, DLR and Elizabeth line directions are shown where relevant.</li>
-        <li>Likely delays means normal London friction, not severe disruption.</li>
-        <li>Where an address or time is missing, the plan flags that instead of guessing hard.</li>
-      </ul>
-    </section>
-
-    <section class="card jump" id="calendar">
       <h2>Quick calendar view</h2>
-      <p class="small">Use this as the fast top-level daily map, then jump into each day for leave times and transport choices.</p>
       <div class="grid six">
-        <article class="calendar-card">
-          <h3>Thu 30 Apr</h3>
-          <div class="calendar-meta">Heathrow, hotel, Fleet Street</div>
-          <ul class="calendar-list">
-            <li>05:30 Heathrow arrival</li>
-            <li>Hotel check-in / drop bags</li>
-            <li>11:00 Old Bank of England Pub</li>
-          </ul>
-          <p class="small"><span class="tag good">Easy day</span></p>
+        
+        <article class='calendar-card'>
+          <h3>Thursday 30 April</h3>
+          <p class='small'><span class='tag good'>Easy day</span></p>
         </article>
-        <article class="calendar-card">
-          <h3>Fri 1 May</h3>
-          <div class="calendar-meta">ExCeL and Canary Wharf heavy</div>
-          <ul class="calendar-list">
-            <li>12:00 Badge collection at ExCeL</li>
-            <li>15:00 Henry Addington</li>
-            <li>17:00 Clays</li>
-            <li>19:00 The Orangery</li>
-          </ul>
-          <p class="small"><span class="tag warn">One evening transfer</span></p>
+        <article class='calendar-card'>
+          <h3>Friday 1 May</h3>
+          <p class='small'><span class='tag warn'>Sensible day; Docklands to Bloomsbury is the main friction point</span></p>
         </article>
-        <article class="calendar-card">
-          <h3>Sat 2 May</h3>
-          <div class="calendar-meta">Mostly central and workable</div>
-          <ul class="calendar-list">
-            <li>09:00 Borough Market</li>
-            <li>11:00 London Bridge</li>
-            <li>12:00 Queen Victoria St</li>
-            <li>14:00 Swan at the Globe</li>
-            <li>18:30 Tower of London</li>
-            <li>22:00 Troxy</li>
-          </ul>
-          <p class="small"><span class="tag good">Busy but sensible</span></p>
+        <article class='calendar-card'>
+          <h3>Saturday 2 May</h3>
+          <p class='small'><span class='tag warn'>Busy but mostly central and realistic</span></p>
         </article>
-        <article class="calendar-card">
-          <h3>Sun 3 May</h3>
-          <div class="calendar-meta">The fragile day</div>
-          <ul class="calendar-list">
-            <li>11:00 Old Broad St</li>
-            <li>14:00 Peninsula Square</li>
-            <li>15:15 Royal Victoria</li>
-            <li>16:00 Hay's Galleria</li>
-            <li>Later meetings partly incomplete</li>
-          </ul>
-          <p class="small"><span class="tag danger">Needs fixing</span></p>
+        <article class='calendar-card'>
+          <h3>Sunday 3 May</h3>
+          <p class='small'><span class='tag warn'>This is the fragile day; the Royal Victoria to Hay’s Galleria leg is the tight one</span></p>
         </article>
-        <article class="calendar-card">
-          <h3>Mon 4 May</h3>
-          <div class="calendar-meta">Tower, ExCeL, back west, then east again</div>
-          <ul class="calendar-list">
-            <li>07:00 Tower of London</li>
-            <li>09:00 Vu from the Tower</li>
-            <li>11:30, 12:00, 13:00 ExCeL</li>
-            <li>15:45 Novotel Tower Bridge</li>
-            <li>17:00 Rocket</li>
-            <li>18:00 Flight Club</li>
-          </ul>
-          <p class="small"><span class="tag warn">Evening discipline needed</span></p>
+        <article class='calendar-card'>
+          <h3>Monday 4 May</h3>
+          <p class='small'><span class='tag good'>Long but workable; the overlap is around noon and early evening gets busy again</span></p>
         </article>
-        <article class="calendar-card">
-          <h3>Tue 5 May</h3>
-          <div class="calendar-meta">Dense day, one tight cross-city hop</div>
-          <ul class="calendar-list">
-            <li>09:00 Docklands</li>
-            <li>10:00 Western Gateway</li>
-            <li>11:00 Canary Wharf</li>
-            <li>12:00 Old Broad St</li>
-            <li>14:00 Berners St</li>
-            <li>16:30 Leadenhall</li>
-            <li>17:30 Liverpool Street</li>
-          </ul>
-          <p class="small"><span class="tag warn">11 to 12 is tight</span></p>
+        <article class='calendar-card'>
+          <h3>Tuesday 5 May</h3>
+          <p class='small'><span class='tag warn'>Dense day; the Abion / House of Lords / Studio 338 chain is the ugly bit</span></p>
+        </article>
+        <article class='calendar-card'>
+          <h3>Wednesday 6 May</h3>
+          <p class='small'><span class='tag warn'>Mostly central, but the 14:00–16:30 and 15:45 items overlap</span></p>
         </article>
       </div>
     </section>
 
+    
     <section class="card jump" id="thursday">
       <h2>Thursday 30 April</h2>
       <div class="table-wrap"><table>
-        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Recommended transport</th><th>Risk / note</th></tr></thead>
+        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
         <tbody>
-          <tr><td>Return to hotel</td><td>Wilde Aparthotels Aldgate</td><td>As soon as through border and bags</td>
-            <td>Elizabeth line eastbound to Liverpool Street, then taxi or 15 to 20 min walk east</td>
-            <td>Low to medium risk. Border control and baggage are the real variable, not rail.</td>
-          </tr>
-          <tr><td>JSMD</td><td>11:00 Old Bank of England Pub, Fleet St</td><td>10:05</td>
-            <td>Taxi best for simplicity, about 25 to 35 min in late morning. Rail backup: Circle line westbound from Aldgate to Temple, then walk.</td>
-            <td>Low risk if leaving by 10:05. Plenty of slack.</td>
-          </tr>
+<tr><td>JSMD / Pre-INTA Reception</td><td>11:00 Old Bank of England Pub (194 Fleet St)</td><td>10:05</td><td>Taxi best for simplicity, about 25 to 35 min in late morning. Rail backup: Circle line westbound from Aldgate to Temple, then walk.</td><td>Low risk if leaving by 10:05.</td></tr>
+<tr><td>Return to hotel</td><td>Wilde Hotel Apartments, Aldgate</td><td>When done</td><td>Taxi or Elizabeth line back east</td><td>No issue.</td></tr>
         </tbody>
       </table></div>
-      <p class="small daynote">Verdict: easy day. Heathrow to Aldgate is straightforward by Elizabeth line.</p>
+      <p class="small daynote">Verdict: Easy day.</p>
     </section>
-
     <section class="card jump" id="friday">
       <h2>Friday 1 May</h2>
       <div class="table-wrap"><table>
-        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Transport</th><th>Risk / comment</th></tr></thead>
+        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
         <tbody>
-          <tr><td>between 12:00–18:00 to collect INTA badge and Grand Finale wristband</td><td>12:00 ExCeL London badge collection</td><td>10:55</td>
-            <td>Elizabeth line eastbound Liverpool Street to Custom House, then short walk</td>
-            <td>Low risk. Better than taxi.</td>
-          </tr>
-          <tr><td>David Yeomans / Elkington &amp; Fife</td><td>15:00 Henry Addington, Canary Wharf</td><td>14:20</td>
-            <td>DLR westbound from Custom House toward Canary Wharf area, then short walk</td>
-            <td>Low risk. Easy Docklands hop.</td>
-          </tr>
-          <tr><td>IP March</td><td>17:00 Clays Canary Wharf</td><td>16:40</td>
-            <td>Walk or short taxi</td>
-            <td>Low risk. Same broader area.</td>
-          </tr>
-          <tr><td>David Legge</td><td>19:00 Orangery at The Zetter, Bloomsbury</td><td>18:00</td>
-            <td>Elizabeth line westbound Canary Wharf to Farringdon, then taxi or walk</td>
-            <td>Medium risk if Friday evening is busy, but still workable.</td>
-          </tr>
-          <tr><td>Return to hotel</td><td>Hotel</td><td>When done</td>
-            <td>Taxi or Elizabeth line from Farringdon/Liverpool Street area back east</td>
-            <td>Fine.</td>
-          </tr>
+<tr><td>INTA badge / Grand Finale wristband collection</td><td>12:00 ExCeL London (Hall S11 near Ribbon Desk)</td><td>10:55</td><td>Elizabeth line eastbound Liverpool Street to Custom House, then short walk.</td><td>Low risk. Better than taxi.</td></tr>
+<tr><td>David Yeomans / Elkington &amp; Fife</td><td>15:00 Henry Addington Pub, Canary Wharf</td><td>14:20</td><td>DLR westbound from Custom House toward Canary Wharf area, then short walk.</td><td>Low risk. Easy Docklands hop.</td></tr>
+<tr><td>IP March</td><td>17:00 Clays Canary Wharf, One Cabot Square</td><td>16:40</td><td>Walk or short taxi</td><td>Low risk. Same broader area.</td></tr>
+<tr><td>David Legge / Tomkins Reception (Ireland)</td><td>19:00 Orangery, The Zetter Hotel, Bloomsbury</td><td>18:00</td><td>Elizabeth line westbound Canary Wharf to Farringdon, then taxi or walk.</td><td>Medium risk if Friday evening is busy, but workable.</td></tr>
+<tr><td>Return to hotel</td><td>Wilde Hotel Apartments, Aldgate</td><td>When done</td><td>Taxi or Elizabeth line from Farringdon/Liverpool Street area back east</td><td>Fine.</td></tr>
         </tbody>
       </table></div>
-      <p class="small daynote">Verdict: sensible day. Docklands legs are easy, Canary Wharf to Bloomsbury is the main friction point.</p>
+      <p class="small daynote">Verdict: Sensible day; Docklands to Bloomsbury is the main friction point.</p>
     </section>
-
     <section class="card jump" id="saturday">
       <h2>Saturday 2 May</h2>
       <div class="table-wrap"><table>
-        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Transport</th><th>Risk / comment</th></tr></thead>
+        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
         <tbody>
-          <tr><td>Felipe Samaniego / Corral Rosales</td><td>09:00 Borough Market</td><td>08:10</td>
-            <td>Taxi or Circle line westbound to Monument plus walk south</td>
-            <td>Low risk on a Saturday morning.</td>
-          </tr>
-          <tr><td>Ben Britter / Keltie</td><td>11:00 No.1 London Bridge</td><td>10:35</td>
-            <td>Walk</td>
-            <td>Low risk. Basically same area.</td>
-          </tr>
-          <tr><td>Paul Davis &amp; friend</td><td>12:00 Nicholsons, Queen Victoria St</td><td>11:35</td>
-            <td>Walk or short taxi north over bridge</td>
-            <td>Low to medium risk if London Bridge is crowded.</td>
-          </tr>
-          <tr><td>Collyer Bristow reception</td><td>14:00 Swan at the Globe</td><td>13:25</td>
-            <td>Taxi or brisk walk south via Millennium/Blackfriars area depending exact preference</td>
-            <td>Low risk.</td>
-          </tr>
-          <tr><td>Andrew Marsden / Willson Gunn</td><td>18:30 Tower of London</td><td>17:40</td>
-            <td>Taxi or District/Circle eastbound toward Tower Hill</td>
-            <td>Low risk with huge buffer.</td>
-          </tr>
-          <tr><td>(RSVP’d) BSKB reception (Chad Billings, USA) – Private Viewing Crown Jewels</td><td>22:00 Troxy, Limehouse</td><td>21:15</td>
-            <td>DLR eastbound from Tower Gateway to Limehouse, then 5 min walk</td>
-            <td>Low risk.</td>
-          </tr>
-          <tr><td>Return to hotel</td><td>Hotel</td><td>When done</td>
-            <td>Taxi easiest late at night, or DLR westbound plus short transfer</td>
-            <td>Fine.</td>
-          </tr>
+<tr><td>Felipe Samaniego / Corral Rosales</td><td>09:00 Borough Market</td><td>08:10</td><td>Taxi or walk via London Bridge; not a hard journey.</td><td>Low risk on a Saturday morning.</td></tr>
+<tr><td>Ben Britter / Keltie</td><td>11:00 Keltie Office, 1 London Bridge</td><td>10:35</td><td>Walk</td><td>Low risk. Same area.</td></tr>
+<tr><td>Paul Davis &amp; friend / JSMD &amp; US contact</td><td>12:00–14:00 Nicholsons Pub</td><td>11:35</td><td>Walk or short taxi north over bridge</td><td>Low to medium risk if London Bridge is crowded.</td></tr>
+<tr><td>Collyer Bristow reception</td><td>14:00 Swan at The Globe (Balcony Room)</td><td>13:25</td><td>Taxi or brisk walk south via Millennium / Blackfriars area</td><td>Low risk.</td></tr>
+<tr><td>Andrew Marsden / Willson Gunn</td><td>16:00 The Vault, Tower Bridge</td><td>15:25</td><td>Taxi or walk east</td><td>Low risk.</td></tr>
+<tr><td>Chad Billings / BSKB reception</td><td>18:30 Tower of London (West Gate Entrance)</td><td>17:40</td><td>Taxi or District/Circle eastbound toward Tower Hill</td><td>Low risk with huge buffer.</td></tr>
+<tr><td>Davis Wright Tremaine reception</td><td>20:00 L’Oscar London</td><td>18:45</td><td>Taxi or Tube west</td><td>High risk if you also try to do Troxy.</td></tr>
+<tr><td>The Opposition Party</td><td>19:30–01:00 Troxy, 490 Commercial Road</td><td>18:30</td><td>DLR or taxi east</td><td>High risk overlap with L’Oscar; choose one.</td></tr>
+<tr><td>Return to hotel</td><td>Wilde Hotel Apartments, Aldgate</td><td>When done</td><td>Taxi easiest late at night, or DLR westbound plus short transfer</td><td>Fine.</td></tr>
         </tbody>
       </table></div>
-      <p class="small daynote">Verdict: busy but mostly central and realistic.</p>
+      <p class="small daynote">Verdict: Busy but mostly central and realistic.</p>
     </section>
-
     <section class="card jump" id="sunday">
       <h2>Sunday 3 May</h2>
       <div class="table-wrap"><table>
-        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Transport</th><th>Risk / comment</th></tr></thead>
+        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
         <tbody>
-          <tr><td>Davis Wright Tremaine (USA) reception</td><td>11:00 5 Old Broad St</td><td>10:20</td>
-            <td>Walk or short taxi west</td>
-            <td>Low risk.</td>
-          </tr>
-          <tr><td>The Opposition Party</td><td>14:00 The Dial, Peninsula Square</td><td>13:05</td>
-            <td>Jubilee line eastbound from London Bridge/Bank interchange zone to North Greenwich, then walk</td>
-            <td>Low to medium risk. Plenty of buffer.</td>
-          </tr>
-          <tr><td>Amazon OC meeting</td><td>15:15 Oiler Bar, Royal Victoria</td><td>14:35</td>
-            <td>Jubilee eastbound one stop to Canning Town, then DLR eastbound to Royal Victoria</td>
-            <td>Medium risk. Connection timing matters.</td>
-          </tr>
-          <tr><td>(RSVP’d) Brand Action Sponsors event</td><td>16:00 Horniman at Hays Galleria</td><td>15:25</td>
-            <td>DLR westbound to Bank or Canning Town change plus Jubilee westbound to London Bridge, then walk</td>
-            <td><strong>High risk.</strong> This is the weakest leg in the whole itinerary. Minimal meeting value unless the 15:15 meeting is intentionally very short.</td>
-          </tr>
-          <tr><td>INBLF</td><td>Holywell Lane, Shoreditch</td><td>TBD, no meeting time supplied</td>
-            <td>Taxi or Northern line northbound plus walk depending final timing</td>
-            <td>Cannot plan properly because the meeting time is missing.</td>
-          </tr>
-          <tr><td>SAINTA</td><td>Churchill War Rooms</td><td>TBD, no meeting time supplied</td>
-            <td>Taxi or Northern/Circle combination south-west</td>
-            <td>Cannot risk-rate without times.</td>
-          </tr>
-          <tr><td>Caroline Rossiter</td><td>19:30 dinner, address TBC</td><td>TBD</td>
-            <td>TBD</td>
-            <td>Blocked by missing address and meeting times.</td>
-          </tr>
+<tr><td>Amazon OC meeting / White &amp; Case</td><td>11:00–13:30 5 Old Broad Street</td><td>10:20</td><td>Walk or short taxi west</td><td>Low risk.</td></tr>
+<tr><td>Brand Action Sponsors event</td><td>14:00–15:00 The Dial – Home of Meantime, Peninsula Square</td><td>13:10</td><td>Jubilee line eastbound to North Greenwich, then walk</td><td>Medium risk if lunch runs late.</td></tr>
+<tr><td>INBLF</td><td>15:15–15:45 The Oiler Bar, Royal Victoria Docks</td><td>14:45</td><td>DLR eastbound / taxi depending exact start point</td><td>High risk. Very little buffer.</td></tr>
+<tr><td>SAINTA</td><td>16:00 The Horniman at Hay’s Galleria</td><td>15:45</td><td>Likely taxi or brisk central walk only</td><td>High risk; this is the brittle hop.</td></tr>
+<tr><td>Abion Prosecco Bike Tour / Caroline Rossiter</td><td>17:00–18:00 Holywell Lane, Shoreditch</td><td>16:25</td><td>Taxi or Tube east / north-east</td><td>Medium risk if the 16:00 meeting overruns.</td></tr>
+<tr><td>Dorsey &amp; Whitney (UK) reception</td><td>18:30 Churchill War Rooms</td><td>17:40</td><td>Tube westbound or taxi</td><td>Medium risk.</td></tr>
+<tr><td>Dinner with Fraser and Jac</td><td>19:30 location TBC</td><td>18:45</td><td>Cannot plan cleanly until venue is confirmed</td><td>Unclear / needs confirmation.</td></tr>
+<tr><td>Return to hotel</td><td>Wilde Hotel Apartments, Aldgate</td><td>When done</td><td>Taxi or Tube east</td><td>Fine if the earlier chain holds.</td></tr>
         </tbody>
       </table></div>
-      <p class="small daynote">Verdict: this day needs cleaning up. The 3:15 to 4:00 leg is harsh, and later missing times make the rest non-actionable.</p>
+      <p class="small daynote">Verdict: This is the fragile day; the Royal Victoria to Hay’s Galleria leg is the tight one.</p>
     </section>
-
     <section class="card jump" id="monday">
       <h2>Monday 4 May</h2>
       <div class="table-wrap"><table>
-        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Transport</th><th>Risk / comment</th></tr></thead>
+        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
         <tbody>
-          <tr><td>(RSVP’d) Dorsey &amp; Whitney (UK) reception</td><td>07:00 Tower of London main entrance</td><td>06:35</td>
-            <td>Walk or very short taxi</td>
-            <td>Low risk.</td>
-          </tr>
-          <tr><td>Fraser and Jac</td><td>09:00 Vu from the Tower</td><td>08:40</td>
-            <td>Walk</td>
-            <td>Very easy.</td>
-          </tr>
-          <tr><td>Claire Kowarsky</td><td>11:30 ExCeL meeting point 1</td><td>10:30 fixed by you</td>
-            <td>DLR eastbound from Tower Gateway to Custom House, then walk</td>
-            <td>Low risk. Your 10:30 departure is sensible.</td>
-          </tr>
-          <tr><td>Kat Welch</td><td>12:00 ExCeL meeting point 1</td><td>11:55</td>
-            <td>Walk</td>
-            <td>No issue.</td>
-          </tr>
-          <tr><td>Prem Chandar / Anand and Anand</td><td>13:00 committee meeting at ExCeL</td><td>12:55</td>
-            <td>Walk</td>
-            <td>No issue.</td>
-          </tr>
-          <tr><td>Stephan Wegner / BAUDELIO &amp; CIA</td><td>15:45 Novotel Tower Bridge lobby</td><td>14:55</td>
-            <td>Elizabeth line westbound from Custom House to Liverpool Street then taxi, or DLR westbound to Tower Gateway</td>
-            <td>Low risk with buffer.</td>
-          </tr>
-          <tr><td>Commercialization of IP Committee meeting</td><td>17:00 Rocket Canary Wharf</td><td>16:20</td>
-            <td>DLR eastbound from Tower Gateway to Canary Wharf or taxi if traffic is kind</td>
-            <td>Medium risk. Rush hour begins to bite.</td>
-          </tr>
-          <tr><td>Kristell Erout / LLR IP</td><td>18:00 Flight Club Shoreditch</td><td>17:20</td>
-            <td>Elizabeth line westbound to Liverpool Street, then walk or short taxi north-east</td>
-            <td>Medium to high risk if the 17:00 meeting drifts.</td>
-          </tr>
-          <tr><td>Return to hotel</td><td>Hotel</td><td>When done</td>
-            <td>Taxi or walk plus short rail</td>
-            <td>Fine.</td>
-          </tr>
+<tr><td>Claire Kowarsky / HSSIPM (Mile Mates run)</td><td>07:00 Tower of London main entrance</td><td>06:40</td><td>Walk</td><td>Low risk.</td></tr>
+<tr><td>Kat Welch / Husch Blackwell</td><td>09:00–10:30 Vu from the Tower, St Katharine’s Way</td><td>08:45</td><td>Walk or very short taxi</td><td>Low risk.</td></tr>
+<tr><td>Prem Chandar / Anand and Anand</td><td>11:30 Meeting Point 1, Convention Centre</td><td>10:50</td><td>Taxi or Tube; travel after breakfast</td><td>Medium risk if the morning drifts.</td></tr>
+<tr><td>Stephan Wegner / BAUDELIO &amp; CIA</td><td>12:00–12:30 Meeting Point 1, Hospitality Area, Convention Centre</td><td>11:55</td><td>Same venue</td><td>Low risk, but it follows straight after the 11:30 meeting.</td></tr>
+<tr><td>Commercialization of IP Committee meeting</td><td>13:00–15:00 Victoria 1</td><td>12:35</td><td>Tube / taxi west</td><td>Low risk.</td></tr>
+<tr><td>Kristell Erout / LLR IP</td><td>15:45 Novotel London Tower Bridge lobby</td><td>15:20</td><td>Taxi east or brisk walk from the conference centre area</td><td>Medium risk.</td></tr>
+<tr><td>Vedder Price reception</td><td>17:00 Rocket Canary Wharf</td><td>16:25</td><td>DLR / Elizabeth line eastbound</td><td>Medium risk.</td></tr>
+<tr><td>Merchant &amp; Gould cocktail reception</td><td>18:00–21:00 Flight Club Shoreditch</td><td>17:35</td><td>Taxi or Tube back west / north-west</td><td>Medium risk if Canary Wharf runs late.</td></tr>
+<tr><td>Return to hotel</td><td>Wilde Hotel Apartments, Aldgate</td><td>When done</td><td>Taxi or walk</td><td>Fine.</td></tr>
         </tbody>
       </table></div>
-      <p class="small daynote">Verdict: workable. The Canary Wharf to Shoreditch switch is the only leg that deserves discipline.</p>
+      <p class="small daynote">Verdict: Long but workable; the overlap is around noon and early evening gets busy again.</p>
     </section>
-
     <section class="card jump" id="tuesday">
       <h2>Tuesday 5 May</h2>
       <div class="table-wrap"><table>
-        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Transport</th><th>Risk / comment</th></tr></thead>
+        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
         <tbody>
-          <tr><td>Vedder Price reception</td><td>09:00 Crowne Plaza Docklands</td><td>08:00</td>
-            <td>Elizabeth line eastbound to Custom House, then walk or taxi</td>
-            <td>Low risk.</td>
-          </tr>
-          <tr><td>(RSVP’d) Merchant &amp; Gould cocktail reception</td><td>10:00 Tapa Tapa Café, Western Gateway</td><td>09:40</td>
-            <td>Walk</td>
-            <td>Easy.</td>
-          </tr>
-          <tr><td>Yingye Wang / Shanghai Patent &amp; Trademark Law Office</td><td>11:00 Radisson Blu Canary Wharf</td><td>10:20</td>
-            <td>DLR westbound via Canary Wharf area then short taxi or walk at the far end</td>
-            <td>Medium risk because the hotel is on the river edge, not right on top of station access.</td>
-          </tr>
-          <tr><td>Michael Turgeon / Vedder Price</td><td>12:00 Dashwood House, Old Broad St</td><td>11:20</td>
-            <td>Elizabeth line westbound from Canary Wharf to Liverpool Street, then walk</td>
-            <td><strong>High risk if the meeting overruns.</strong> Manage this one tightly.</td>
-          </tr>
-          <tr><td>Ivan Dimitrov / Hoyng Rokh Monegier</td><td>14:00 30 Berners St</td><td>13:15</td>
-            <td>Elizabeth or Central line westbound-ish via Tottenham Court Road area, or taxi if light</td>
-            <td>Low risk.</td>
-          </tr>
-          <tr><td>Netflix OC meeting</td><td>16:30 Lamb Tavern, Leadenhall</td><td>15:35</td>
-            <td>Elizabeth/Central eastbound back toward Liverpool Street or Bank, then walk</td>
-            <td>Low risk.</td>
-          </tr>
-          <tr><td>Lewis Jones / Dummett Copp</td><td>17:30 BOXHALL City</td><td>17:10</td>
-            <td>Walk</td>
-            <td>Very easy.</td>
-          </tr>
-          <tr><td>between 16:00–20:00 (RSVP’d flexible) Abion reception</td><td>19:45 location TBC</td><td>TBD</td>
-            <td>TBD</td>
-            <td>Cannot plan until location is known.</td>
-          </tr>
-          <tr><td>Francisco Gallegos / Corral Rosales</td><td>22:00 Studio 338, North Greenwich area</td><td>TBD</td>
-            <td>Likely Jubilee line eastbound to North Greenwich plus taxi/walk, depending actual starting point</td>
-            <td>Risk unknown until the 19:45 venue is fixed.</td>
-          </tr>
+<tr><td>Yingye Wang / Shanghai Patent &amp; Trademark Law Office (China)</td><td>09:00 Crowne Plaza Docklands (Tower Suite)</td><td>08:15</td><td>Elizabeth line eastbound / DLR as needed</td><td>Low risk.</td></tr>
+<tr><td>Michael Turgeon / Vedder Price (USA)</td><td>10:00–10:30 Radisson Blu Canary Wharf (River Room)</td><td>09:40</td><td>DLR / short cab</td><td>Low risk.</td></tr>
+<tr><td>Ivan Dimitrov / Hoyng Rokh Monegier (Germany)</td><td>12:00–13:30 The Ivy City Garden</td><td>11:25</td><td>Taxi or Tube west</td><td>Medium risk.</td></tr>
+<tr><td>Netflix OC meeting / US</td><td>14:00–16:00 30 Berners Street</td><td>13:15</td><td>Taxi or Tube west</td><td>Medium risk.</td></tr>
+<tr><td>Lewis Jones / Dummett Copp</td><td>approximately 16:30 The Lamb Tavern (proposed)</td><td>16:10</td><td>Walk or short taxi from Berners Street</td><td>Medium risk because the venue is only proposed.</td></tr>
+<tr><td>Abion reception</td><td>16:00–20:00 BOXHALL City, Liverpool Street</td><td>15:50</td><td>Walk</td><td>High-risk overlap with the 16:30 meeting and 19:45 dinner.</td></tr>
+<tr><td>Francisco Gallegos / Corral Rosales</td><td>19:45 House of Lords reception followed by dinner (location TBC)</td><td>18:45</td><td>Westbound taxi / Tube depending venue access</td><td>High risk because the later venue is still TBC.</td></tr>
+<tr><td>Inventa reception</td><td>21:00–02:00 Studio 338</td><td>20:00</td><td>Jubilee eastbound to North Greenwich, then taxi / walk</td><td>High risk if you try to do the earlier evening events first.</td></tr>
+<tr><td>Return to hotel</td><td>Wilde Hotel Apartments, Aldgate</td><td>When done</td><td>Taxi late at night</td><td>Fine if you survive the evening.</td></tr>
         </tbody>
       </table></div>
-      <p class="small daynote">Verdict: sharp but doable. The 11:00 to 12:00 leg is the one to police hard.</p>
+      <p class="small daynote">Verdict: Dense day; the Abion / House of Lords / Studio 338 chain is the ugly bit.</p>
     </section>
-
     <section class="card jump" id="wednesday">
       <h2>Wednesday 6 May</h2>
       <div class="table-wrap"><table>
-        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Transport</th><th>Risk / comment</th></tr></thead>
+        <thead><tr><th>Meeting (who / firm)</th><th>Venue / next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
         <tbody>
-          <tr><td>Inventa reception</td><td>08:30 Hampton by Hilton London City</td><td>08:10</td>
-            <td>Walk</td>
-            <td>Easy.</td>
-          </tr>
-          <tr><td>Simone Poot / EURICA Law</td><td>10:00 Pan Pacific near Liverpool Street</td><td>09:35</td>
-            <td>Walk</td>
-            <td>Easy.</td>
-          </tr>
-          <tr><td>Chad Billings / BSKB</td><td>11:30 destination TBC</td><td>TBD</td>
-            <td>TBD</td>
-            <td>Cannot route without venue.</td>
-          </tr>
-          <tr><td>Kalev Kaosaar / Kaosaar IP</td><td>13:00 destination TBC</td><td>TBD</td>
-            <td>TBD</td>
-            <td>Cannot route without both venues.</td>
-          </tr>
-          <tr><td>Steven Cooper and Phil Cox</td><td>14:30 Botanist Broadgate</td><td>TBD</td>
-            <td>TBD</td>
-            <td>Still blocked by unknown 13:00 location.</td>
-          </tr>
-          <tr><td>Spencer Sanders / Fresh IP</td><td>15:45 between Soho and Shoreditch</td><td>15:05</td>
-            <td>Elizabeth or Central line westbound-ish if Soho side, taxi if truly midway and awkward</td>
-            <td>Medium risk because the destination is vague.</td>
-          </tr>
-          <tr><td>Charles Kagay</td><td>17:00 Tate Modern entrance</td><td>16:20</td>
-            <td>Elizabeth/Central plus walk, or taxi if starting closer to Soho</td>
-            <td>Medium risk. Vague origin makes this softer than it should be.</td>
-          </tr>
-          <tr><td>Grand Finale</td><td>19:00 Tate Modern</td><td>18:55</td>
-            <td>Walk</td>
-            <td>No issue.</td>
-          </tr>
+<tr><td>Simone Poot / EURICA Law</td><td>10:00 Pan Pacific Hotel (near Liverpool Street)</td><td>09:35</td><td>Walk or short taxi</td><td>Low risk.</td></tr>
+<tr><td>Chad Billings / BSKB</td><td>11:30 location TBC downtown</td><td>11:00</td><td>Cannot optimise until the venue is confirmed</td><td>Unclear.</td></tr>
+<tr><td>Kalev Kaosaar / Kaosaar IP</td><td>13:00 location TBC</td><td>12:20</td><td>Cannot optimise until the venue is confirmed</td><td>Unclear.</td></tr>
+<tr><td>Steven Cooper and Phil Cox / Falcon Rappaport &amp; Berkman / 60DTBB</td><td>14:00–16:30 Botanist Broadgate Circle</td><td>13:40</td><td>Walk or short taxi</td><td>Medium risk.</td></tr>
+<tr><td>Spencer Sanders / Fresh IP</td><td>15:45 meeting point between Soho and Shoreditch (to confirm)</td><td>15:15</td><td>Taxi or Tube, but the location is not fixed</td><td>High risk overlap with the 14:00–16:30 happy hour.</td></tr>
+<tr><td>Charles Kagay / INBLF</td><td>17:00 entrance of Tate Modern</td><td>16:20</td><td>Tube westbound or taxi south-west</td><td>Medium risk.</td></tr>
+<tr><td>Grand Finale</td><td>19:00–22:00 Tate Modern, Bankside</td><td>18:20</td><td>Already at the venue</td><td>Low risk once you are there.</td></tr>
+<tr><td>Return to hotel</td><td>Wilde Hotel Apartments, Aldgate</td><td>When done</td><td>Taxi or Tube east</td><td>Fine.</td></tr>
         </tbody>
       </table></div>
-      <p class="small daynote">Verdict: not properly finishable until the 11:30 and 13:00 venues are locked in.</p>
-    </section>
-
-    <section class="card">
-      <h2>Bottom line</h2>
-      <ul>
-        <li>The biggest practical problems are not transport, they are missing venues, missing times, and one or two over-ambitious handovers.</li>
-        <li>If you want this to be genuinely useful on the ground, Sunday and Wednesday need fixing first.</li>
-        <li>Where possible, use Elizabeth line, Jubilee, DLR, and walking before trusting taxis in weekday business traffic.</li>
-      </ul>
+      <p class="small daynote">Verdict: Mostly central, but the 14:00–16:30 and 15:45 items overlap.</p>
     </section>
 
     <footer>
-      <p>This schedule uses practical planning assumptions and should be checked against live TfL conditions and actual meeting durations closer to the event.</p>
+      <p>Use the dashboard to jump to a person. No cross-link maze.</p>
     </footer>
   </div>
 </body>
