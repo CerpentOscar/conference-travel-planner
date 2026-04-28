@@ -38,6 +38,23 @@
     .warn { background: var(--warnbg); color: var(--warn); }
     .danger { background: var(--dangerbg); color: var(--danger); }
     .small { font-size: 0.92rem; color: var(--muted); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .button-link.primary { background: var(--accent); color: white; border-color: var(--accent); }
+
     .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     table { width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 760px; }
     th, td { border: 1px solid var(--line); padding: 10px; vertical-align: top; text-align: left; }
@@ -64,6 +81,11 @@
       <h1>Erik&#x27;s Conference Travel Planner</h1>
       <p class="lead">Erik’s itinerary with practical leave times, rail direction notes, and the obvious overlap warnings.</p>
       <p class="small"><strong>Source brief:</strong> London conference itinerary, aiming to get to the next meeting about 5 minutes early, with rough real-world transport choices and risk flags.</p>
+    
+      <div class="hero-actions">
+        <a class="button-link primary" href="index.html">Back to dashboard</a>
+        <a class="button-link" href="#overview">Quick read</a>
+      </div>
     </header>
 
     <nav class="topnav">
