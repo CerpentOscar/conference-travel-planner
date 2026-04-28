@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lana&#x27;s Conference Travel Planner</title>
+  <meta name="description" content="Lana’s London planner with leave-by times, sensible rail/taxi choices, and red-flag overlap notes." />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #dbe2ea;
+      --accent: #0f766e;
+      --soft: #ccfbf1;
+      --warn: #92400e;
+      --warnbg: #ffedd5;
+      --danger: #991b1b;
+      --dangerbg: #fee2e2;
+      --good: #166534;
+      --goodbg: #dcfce7;
+      --max: 1200px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); line-height: 1.45; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 20px; }
+    h1,h2,h3 { line-height: 1.2; }
+    h1 { margin: 0 0 10px; font-size: 2.1rem; }
+    p { margin: 0 0 10px; }
+    .lead { color: var(--muted); max-width: 70rem; }
+    .pill { display: inline-block; padding: 5px 10px; border-radius: 999px; background: var(--soft); color: var(--accent); font-weight: 700; margin-bottom: 10px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin: 16px 0; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+    .grid { display: grid; gap: 16px; }
+    @media (min-width: 900px) { .grid.three { grid-template-columns: 1fr 1fr 1fr; } }
+    .tag { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; }
+    .good { background: var(--goodbg); color: var(--good); }
+    .warn { background: var(--warnbg); color: var(--warn); }
+    .danger { background: var(--dangerbg); color: var(--danger); }
+    .small { font-size: 0.92rem; color: var(--muted); }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 760px; }
+    th, td { border: 1px solid var(--line); padding: 10px; vertical-align: top; text-align: left; }
+    th { background: #eef4f8; }
+    ul { margin: 8px 0 0 18px; }
+    .topnav { position: sticky; top: 0; z-index: 10; background: rgba(245,247,251,0.95); backdrop-filter: blur(10px); padding: 10px 0 2px; }
+    .navlinks { display: flex; gap: 10px; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; }
+    .navlinks a { display: inline-block; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--text); text-decoration: none; font-size: 0.92rem; font-weight: 700; }
+    .jump { scroll-margin-top: 90px; }
+    @media (max-width: 759px) {
+      .wrap { padding: 14px; }
+      h1 { font-size: 1.7rem; }
+      .card { padding: 14px; }
+      th, td { padding: 8px; font-size: 0.9rem; }
+      .navlinks a { font-size: 0.86rem; padding: 7px 10px; }
+    }
+    footer { color: var(--muted); font-size: 0.9rem; padding: 12px 0 30px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="card">
+      <div class="pill">Conference travel planner</div>
+      <h1>Lana&#x27;s Conference Travel Planner</h1>
+      <p class="lead">Lana’s London planner with leave-by times, sensible rail/taxi choices, and red-flag overlap notes.</p>
+      <p class="small"><strong>Source brief:</strong> London conference itinerary, aiming to get to the next meeting about 5 minutes early, with rough real-world transport choices and risk flags.</p>
+    </header>
+
+    <nav class="topnav">
+      <section class="card">
+        <ul class="navlinks"><li><a href="index.html">Matt</a></li><li><a href="claire.html">Claire</a></li><li><a href="erik.html">Erik</a></li><li><a href="christine.html">Christine</a></li></ul>
+      </section>
+    </nav>
+
+    <section class="card jump" id="overview">
+      <h2>Quick read</h2>
+      <div class="grid three">
+        <div><span class="tag good">Mostly clean</span><ul><li>Friday and Saturday are straightforward enough.</li><li>Tuesday night is the monster.</li><li>Wednesday works if the central/east legs stay on schedule.</li></ul></div><div><span class="tag warn">Transport reality</span><ul><li>Elizabeth line is your best friend.</li><li>Central line handles Holborn / Soho / Piccadilly.</li><li>Taxi only when time or late-night safety beats efficiency.</li></ul></div><div><span class="tag danger">Risk calls</span><ul><li>Tuesday 20:00 onward.</li><li>Saturday evening overlap if Troxy wins.</li><li>Thursday is trivial, which is a refreshing change for once.</li></ul></div>
+      </div>
+    </section>
+
+    
+    <section class="card jump" id="thu-30-apr">
+      <h2>Thursday 30 April</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>From</th><th>Next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
+        <tbody><tr><td>Hotel</td><td>18:00 dinner with Francois M, location TBC</td><td>17:15</td><td>Taxi unless the venue lands nearby</td><td>Low risk, but TBC matters.</td></tr></tbody>
+      </table></div>
+      <p class="small">Very light day. Dinner only, so the transport problem is basically nonexistent.</p>
+    </section>
+    <section class="card jump" id="fri-1-may">
+      <h2>Friday 1 May</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>From</th><th>Next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
+        <tbody><tr><td>Hotel</td><td>13:00 lunch at Holborn Dining Room</td><td>12:25</td><td>Central line westbound to Holborn or taxi</td><td>Low risk.</td></tr><tr><td>Holborn</td><td>17:00 Clays Canary Wharf</td><td>16:05</td><td>Elizabeth line eastbound to Canary Wharf</td><td>Medium risk if lunch runs over.</td></tr><tr><td>Canary Wharf</td><td>19:00 Orangery / Zetter Hotel</td><td>18:05</td><td>Elizabeth line westbound to Farringdon then walk/taxi</td><td>Medium risk, Friday evening traffic can be stupid.</td></tr></tbody>
+      </table></div>
+      <p class="small">Solid central-to-east-to-central chain. The Bloomsbury reception is the long hop; the rest is manageable.</p>
+    </section>
+    <section class="card jump" id="sat-2-may">
+      <h2>Saturday 2 May</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>From</th><th>Next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
+        <tbody><tr><td>Hotel</td><td>10:00 Black Penny, Covent Garden</td><td>09:20</td><td>Walk / Tube west</td><td>Low risk.</td></tr><tr><td>Covent Garden</td><td>13:00 Fox &amp; Anchor, Charterhouse St</td><td>12:15</td><td>Walk or short taxi east</td><td>Low risk.</td></tr><tr><td>Fox &amp; Anchor</td><td>15:45 Rakes Café</td><td>15:15</td><td>Taxi / walk depending final venue</td><td>Medium risk because Rakes Café is vague.</td></tr><tr><td>Rakes Café</td><td>17:00 onward dinner near hotel</td><td>16:30</td><td>Walk or short taxi</td><td>Easy if truly near Aldgate.</td></tr><tr><td>Dinner</td><td>19:30 Troxy</td><td>18:45</td><td>DLR eastbound to Limehouse, then walk</td><td>Low risk if you leave on time.</td></tr></tbody>
+      </table></div>
+      <p class="small">Pretty workable until the evening party run. The 17:00-onwards dinner and 19:30 Troxy are competing for oxygen.</p>
+    </section>
+    <section class="card jump" id="sun-3-may">
+      <h2>Sunday 3 May</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>From</th><th>Next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
+        <tbody><tr><td>Hotel</td><td>09:00 Caffè Tropea, Russell Square</td><td>08:20</td><td>Central line westbound / taxi</td><td>Low risk.</td></tr><tr><td>Russell Square</td><td>11:00 White &amp; Case, 5 Old Broad Street</td><td>10:15</td><td>Tube eastbound / walk</td><td>Low risk.</td></tr><tr><td>Old Broad Street</td><td>14:00 L’ETO Soho, Wardour Street</td><td>13:15</td><td>Central line westbound to Tottenham Court Road</td><td>Medium risk but fine.</td></tr><tr><td>Soho</td><td>14:30 Kettner’s / Soho House</td><td>14:20</td><td>Walk</td><td>No issue.</td></tr><tr><td>Kettner’s</td><td>16:00 The Met Building, Percy Street</td><td>15:50</td><td>Walk</td><td>No issue.</td></tr><tr><td>Percy Street</td><td>18:30 The Original Ivy</td><td>18:00</td><td>Walk / short taxi</td><td>Easy.</td></tr></tbody>
+      </table></div>
+      <p class="small">Comfortable central day. No drama unless you insist on over-filling it.</p>
+    </section>
+    <section class="card jump" id="mon-4-may">
+      <h2>Monday 4 May</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>From</th><th>Next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
+        <tbody><tr><td>Hotel</td><td>07:00 Brandsmiths run</td><td>06:50</td><td>Walk</td><td>Easy.</td></tr><tr><td>Run</td><td>09:15 70 St Mary Axe</td><td>08:45</td><td>Walk / short taxi</td><td>Low risk.</td></tr><tr><td>70 St Mary Axe</td><td>13:00 meeting at same area</td><td>12:45</td><td>Walk</td><td>No issue.</td></tr><tr><td>City</td><td>15:00 WagTail Rooftop Bar</td><td>14:20</td><td>Walk / taxi</td><td>Low risk.</td></tr><tr><td>WagTail</td><td>17:00 Sushisamba, Heron Tower</td><td>16:35</td><td>Walk</td><td>Easy.</td></tr></tbody>
+      </table></div>
+      <p class="small">Morning run, then a nice east-side cluster. Evening drinks are straightforward if you don’t dawdle.</p>
+    </section>
+    <section class="card jump" id="tue-5-may">
+      <h2>Tuesday 5 May</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>From</th><th>Next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
+        <tbody><tr><td>Hotel</td><td>09:00 Senzo, Vine Street</td><td>08:35</td><td>Walk</td><td>Low risk.</td></tr><tr><td>Senzo</td><td>12:00 Los Mochis, 100 Liverpool Street</td><td>11:20</td><td>Walk</td><td>Easy.</td></tr><tr><td>Los Mochis</td><td>14:00 Netflix, 30 Berners Street</td><td>13:15</td><td>Elizabeth / Central westbound or taxi</td><td>Low risk.</td></tr><tr><td>Berners Street</td><td>16:00 Reddie &amp; Grose, 120 Fenchurch St</td><td>15:20</td><td>Walk / taxi east</td><td>Low risk.</td></tr><tr><td>Fenchurch Street</td><td>18:30 Stephenson Harwood, Tower Bridge Walkway</td><td>18:00</td><td>Walk or short taxi east</td><td>Medium risk.</td></tr><tr><td>Tower Bridge</td><td>20:00 All Aussie Firms, 65 Rivington / Studio 338</td><td>19:00</td><td>Taxi only; this is a long late hop</td><td>High risk.</td></tr></tbody>
+      </table></div>
+      <p class="small">This is the day to watch: Docklands, Liverpool Street, then late-night east-end chaos.</p>
+    </section>
+    <section class="card jump" id="wed-6-may">
+      <h2>Wednesday 6 May</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>From</th><th>Next stop</th><th>Leave by</th><th>Transport</th><th>Risk / note</th></tr></thead>
+        <tbody><tr><td>Hotel</td><td>08:00 The Dilly, Piccadilly</td><td>07:25</td><td>Central line westbound / taxi</td><td>Low risk.</td></tr><tr><td>The Dilly</td><td>10:30 Novotel London ExCeL Lobby</td><td>09:35</td><td>Elizabeth line eastbound to Custom House</td><td>Low risk.</td></tr><tr><td>ExCeL</td><td>13:00 The Folly, Gracechurch St</td><td>12:10</td><td>DLR / Elizabeth westbound then walk</td><td>Medium risk.</td></tr><tr><td>The Folly</td><td>15:00 640 East, Canary Wharf</td><td>14:15</td><td>Elizabeth line eastbound</td><td>Low risk.</td></tr><tr><td>Canary Wharf</td><td>17:00 The Blackfriar</td><td>16:00</td><td>Elizabeth line westbound to Farringdon then walk</td><td>Low risk.</td></tr></tbody>
+      </table></div>
+      <p class="small">Decent central/east mix. The Dilly-to-ExCeL move is the main travel piece; the rest is simpler.</p>
+    </section>
+
+    <section class="card">
+      <h2>Bottom line</h2>
+      <ul>
+        <li>These are practical planning estimates, not live TfL instructions.</li>
+        <li>Anything marked TBC or overlapping needs a final venue/time check.</li>
+        <li>Weekday traffic means taxi is often only useful for short awkward hops.</li>
+      </ul>
+    </section>
+
+    <footer><p>Check live transport and venue access before travel. London enjoys being annoying for sport.</p></footer>
+  </div>
+</body>
+</html>
