@@ -34,11 +34,43 @@
     .grid { display: grid; gap: 16px; }
     @media (min-width: 900px) { .grid.three { grid-template-columns: 1fr 1fr 1fr; } }
     @media (min-width: 760px) { .grid.six { grid-template-columns: repeat(6, 1fr); } }
+    @media (min-width: 900px) { .grid.people { grid-template-columns: repeat(3, 1fr); } }
     .tag { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; }
     .good { background: var(--goodbg); color: var(--good); }
     .warn { background: var(--warnbg); color: var(--warn); }
     .danger { background: var(--dangerbg); color: var(--danger); }
     .small { font-size: 0.92rem; color: var(--muted); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .button-link.primary { background: var(--accent); color: white; border-color: var(--accent); }
+    .person-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      min-height: 160px;
+    }
+    .person-card h3 { margin: 0; }
+    .person-card p { margin: 0; color: var(--muted); }
+    .person-card .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .person-card .actions a { padding: 8px 10px; font-size: 0.9rem; }
     .daynote { margin-top: 8px; }
     .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     table { width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 760px; }
@@ -100,9 +132,67 @@
       <div class="pill">Matt's conference travel planner</div>
       <h1>London schedule, travel reality, and risk review</h1>
       <p class="lead">Built from Matt's itinerary brief. This version uses rough real-world London travel assumptions, aims for arrival 5 minutes early, and flags legs that are likely to be tight, weak, or unrealistic. Directions and lines are based on the most direct mainstream options and should be rechecked closer to travel because engineering works, DLR changes, and London traffic can shift the best route.</p>
-      <p class="small">Other pages: <a href="claire.html">Claire</a> · <a href="lana.html">Lana</a> · <a href="erik.html">Erik</a> · <a href="christine.html">Christine</a> · <a href="ralph.html">Ralph</a> · <a href="sim.html">Simonne</a></p>
+      <div class="hero-actions">
+        <a class="button-link primary" href="#itineraries">Choose an itinerary</a>
+        <a class="button-link" href="#overview">Matt overview</a>
+      </div>
       <p class="small"><strong>Source brief:</strong> international conference in London, multiple meetings across the city, with a need for day-by-day leave times, transport mode, line direction, delay risk, and a verdict on whether each leg is actually sensible.</p>
     </header>
+
+    <section class="card jump" id="itineraries">
+      <h2>Itinerary links</h2>
+      <div class="grid people">
+        <article class="person-card">
+          <div>
+            <h3>Matt</h3>
+            <p>Main conference plan with the full day-by-day travel breakdown.</p>
+          </div>
+          <div class="actions"><a class="button-link primary" href="./">Open</a></div>
+        </article>
+        <article class="person-card">
+          <div>
+            <h3>Claire</h3>
+            <p>Central, Docklands, O2, and a couple of ugly overlaps.</p>
+          </div>
+          <div class="actions"><a class="button-link primary" href="claire.html">Open</a></div>
+        </article>
+        <article class="person-card">
+          <div>
+            <h3>Lana</h3>
+            <p>Compact route set with a few sharp evening transfers.</p>
+          </div>
+          <div class="actions"><a class="button-link primary" href="lana.html">Open</a></div>
+        </article>
+        <article class="person-card">
+          <div>
+            <h3>Erik</h3>
+            <p>Docklands-heavy days and some late-night chaos.</p>
+          </div>
+          <div class="actions"><a class="button-link primary" href="erik.html">Open</a></div>
+        </article>
+        <article class="person-card">
+          <div>
+            <h3>Christine</h3>
+            <p>Big central itinerary with a few overlap traps.</p>
+          </div>
+          <div class="actions"><a class="button-link primary" href="christine.html">Open</a></div>
+        </article>
+        <article class="person-card">
+          <div>
+            <h3>Ralph</h3>
+            <p>Long days, late nights, and several impossible doubles.</p>
+          </div>
+          <div class="actions"><a class="button-link primary" href="ralph.html">Open</a></div>
+        </article>
+        <article class="person-card">
+          <div>
+            <h3>Simonne</h3>
+            <p>Fast central hops with a few meetings that step on each other.</p>
+          </div>
+          <div class="actions"><a class="button-link primary" href="sim.html">Open</a></div>
+        </article>
+      </div>
+    </section>
 
     <nav class="topnav">
       <section class="card">
@@ -120,6 +210,8 @@
           <li><a href="lana.html">Lana</a></li>
           <li><a href="erik.html">Erik</a></li>
           <li><a href="christine.html">Christine</a></li>
+          <li><a href="ralph.html">Ralph</a></li>
+          <li><a href="sim.html">Simonne</a></li>
         </ul>
       </section>
     </nav>
